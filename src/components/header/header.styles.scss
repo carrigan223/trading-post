@@ -4,11 +4,18 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
+    background-color: black;
+    border-bottom: 1px solid black;
 
     .logo-container {
         height: 100%;
         width: 70px;
-        padding: 25px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        
     }
 
     .options {
@@ -20,6 +27,10 @@
 
         .option {
             padding: 10px 15px;
+            color: white;
+            font-size: 2rem;
+            margin-right: 20px;
+            
         }
     }
 }

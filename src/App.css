@@ -1,9 +1,13 @@
 body {
     font-family: 'Open Sans Condensed';
-    padding: 20px 80px;
 }
 
 a {
     text-decoration: none;
     color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.115rem;
 }

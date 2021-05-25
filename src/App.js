@@ -5,7 +5,7 @@ import HomePage from './view-components/homepage/homepage'
 import ShopPage from './view-components/shoppage/shop'
 import SignInAndSignUpPage from './view-components/signinpage/signinpage'
 import Header from './components/header/header'
-import { auth } from '../src/firebase/firbase.utils'
+import { auth, createUserProfileDocument } from '../src/firebase/firbase.utils'
 
 class App extends React.Component {
     constructor() {
@@ -22,8 +22,23 @@ class App extends React.Component {
     //app a message is sent through firebase, as long as APP is mounted on DOM
     //this subscription is open
     componentDidMount() {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-            this.setState({ currentUser: user })
+        //checking for auth state change
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+            //if userAuth is not null
+            if (userAuth) {
+                const userRef = await createUserProfileDocument(userAuth)
+
+                userRef.onSnapshot((snapshot) => {
+                    this.setState({
+                        currentUser: {
+                            id: snapshot.id,
+                            ...snapshot.data(),
+                        },
+                    })
+                    console.log(this.state)
+                })
+            }
+            this.setState({ currentUser: userAuth })
         })
     }
 
@@ -32,6 +47,7 @@ class App extends React.Component {
     }
 
     render() {
+        console.log(this.state.currentUser)
         return (
             <div>
                 <Header currentUser={this.state.currentUser} />

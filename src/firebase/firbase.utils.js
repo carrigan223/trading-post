@@ -13,13 +13,44 @@ const config = {
     measurementId: 'G-0LQCSN9WHR',
 }
 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if (!userAuth) return
+
+    //the user we are querying for
+    const userRef = firestore.doc(`users/${userAuth.uid}`)
+
+    //snapshot of user document which will contain the exist prop
+    const snapShot = await userRef.get()
+
+    //checking firebase for existence of a user
+    //if user doesnt exist creating an instance of that user
+    if (!snapShot.exists) {
+        const { displayName, email } = userAuth
+        const createdAt = new Date()
+
+        try {
+            //using the .set() to create the user document in firebase
+            //users collection
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData,
+            })
+        } catch (error) {
+            console.log('Error creating user', error.message)
+        }
+    }
+    //return userRef for later use
+    return userRef
+}
+
 //initializing App with config object
 firebase.initializeApp(config)
 
 //exporting auth and firs=estore for outside use
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
-
 
 const provider = new firebase.auth.GoogleAuthProvider()
 

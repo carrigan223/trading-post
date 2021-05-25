@@ -5,18 +5,44 @@ import HomePage from './view-components/homepage/homepage'
 import ShopPage from './view-components/shoppage/shop'
 import SignInAndSignUpPage from './view-components/signinpage/signinpage'
 import Header from './components/header/header'
+import { auth } from '../src/firebase/firbase.utils'
 
-function App() {
-    return (
-        <div>
-            <Header />
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/shop" component={ShopPage} />
-                <Route path="/signin" component={SignInAndSignUpPage} />
-            </Switch>
-        </div>
-    )
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            currentUser: null,
+        }
+    }
+
+    unsubscribeFromAuth = null
+
+    //adjusting state of user based on listening
+    //to oauth, open subscription, whenever any changes occur related to this
+    //app a message is sent through firebase, as long as APP is mounted on DOM
+    //this subscription is open
+    componentDidMount() {
+        this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+            this.setState({ currentUser: user })
+        })
+    }
+
+    componentWillUnmount() {
+        this.unsubscribeFromAuth()
+    }
+
+    render() {
+        return (
+            <div>
+                <Header currentUser={this.state.currentUser} />
+                <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route path="/shop" component={ShopPage} />
+                    <Route path="/signin" component={SignInAndSignUpPage} />
+                </Switch>
+            </div>
+        )
+    }
 }
 
 export default App

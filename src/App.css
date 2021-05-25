@@ -11,3 +11,7 @@ a:hover {
     text-decoration: underline;
     text-decoration-thickness: 0.115rem;
 }
+
+* {
+    box-sizing: border-box;
+}

@@ -35,7 +35,6 @@ class App extends React.Component {
                             ...snapshot.data(),
                         },
                     })
-                    console.log(this.state)
                 })
             }
             this.setState({ currentUser: userAuth })
@@ -47,7 +46,6 @@ class App extends React.Component {
     }
 
     render() {
-        console.log(this.state.currentUser)
         return (
             <div>
                 <Header currentUser={this.state.currentUser} />

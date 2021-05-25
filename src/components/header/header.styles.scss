@@ -14,8 +14,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
-        
     }
 
     .options {
@@ -30,7 +28,15 @@
             color: white;
             font-size: 2rem;
             margin-right: 20px;
-            
+
+            &.sign-out {
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-thickness: 0.1rem;
+                }
+            }
         }
     }
 }

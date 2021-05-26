@@ -7,6 +7,15 @@
     background-color: black;
     border-bottom: 1px solid black;
 
+    .welcome {
+        padding: 10px 15px;
+        color: white;
+        font-size: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
     .logo-container {
         height: 100%;
         width: 70px;
@@ -17,7 +26,7 @@
     }
 
     .options {
-        width: 50%;
+        width: 30%;
         height: 100%;
         display: flex;
         align-items: center;

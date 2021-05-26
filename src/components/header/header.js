@@ -3,6 +3,7 @@ import { connect } from 'react-redux' //connect is a higher order compnent
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase/firbase.utils'
 import { ReactComponent as Logo } from '../../assets/crown.svg'
+import CartIcon from '../cart-icon/cart-icon'
 
 import './header.styles.scss'
 
@@ -41,6 +42,7 @@ const Header = ({ currentUser }) => {
                     </Link>
                 )}
             </div>
+                <CartIcon />
         </div>
     )
 }

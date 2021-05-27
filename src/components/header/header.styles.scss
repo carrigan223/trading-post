@@ -1,3 +1,16 @@
+//setting the keyframes for background color transitions
+@keyframes TransitioningBackground {
+    0% {
+        background-position: 1% 0%;
+    }
+    50% {
+        background-position: 99% 100%;
+    }
+    100% {
+        background-position: 1% 0%;
+    }
+}
+
 .header {
     height: 70px;
     width: 100%;
@@ -5,7 +18,7 @@
     justify-content: space-between;
     margin-bottom: 25px;
     background-color: black;
-    border-bottom: 1px solid black;
+    border: 5px solid black;
 
     .welcome {
         padding: 10px 15px;
@@ -13,7 +26,8 @@
         font-size: 2rem;
         width: 100%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
+        text-transform: uppercase;
     }
 
     .logo-container {
@@ -24,6 +38,12 @@
         justify-content: center;
         align-items: center;
         padding: 1rem;
+
+        &:hover {
+            background-image: (linear-gradient(270deg, #0039a6, white));
+            background-size: 400% 400%;
+            animation: TransitioningBackground 10s ease infinite;
+        }
     }
 
     .options {
@@ -44,7 +64,8 @@
 
                 &:hover {
                     text-decoration: underline;
-                    text-decoration-thickness: 0.1rem;
+                    text-decoration-thickness: 0.115rem;
+                    text-decoration-color: #ff6319;
                 }
             }
         }

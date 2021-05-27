@@ -18,6 +18,7 @@ a {
 a:hover {
     text-decoration: underline;
     text-decoration-thickness: 0.115rem;
+    text-decoration-color: #ff6319;
 }
 
 * {

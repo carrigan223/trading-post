@@ -1,9 +1,25 @@
+//setting the keyframes for background color transitions
+@keyframes TransitioningBackground {
+    0% {
+        background-position: 1% 0%;
+    }
+    50% {
+        background-position: 99% 100%;
+    }
+    100% {
+        background-position: 1% 0%;
+    }
+}
+
 .collection-item {
     width: 22%;
     display: flex;
     flex-direction: column;
     height: 350px;
     align-items: center;
+    position: relative;
+    border: 2px solid black;
+    box-shadow: 2px 2px 10px grey;
 
     .image {
         width: 100%;
@@ -11,8 +27,34 @@
         background-size: cover;
         background-position: center;
         margin-bottom: 5px;
-        border: 1px solid black;
-        box-shadow: 2px 2px 10px grey;
+        border-bottom: 2px solid black;
+    }
+
+    .custom-button {
+        width: 100%;
+        position: absolute bottom;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        border-top: 2px solid black;
+        font-size: 1.5rem;
+
+        &:hover {
+            background-image: (
+                linear-gradient(
+                    270deg,
+                    #0039a6,
+                    #ff6319,
+                    #fccc0a,
+                    #808183,
+                    #00933c
+                )
+            );
+            background-size: 400% 400%;
+            animation: TransitioningBackground 10s infinite;
+            border-top: 2px solid black;
+            color: black;
+        }
     }
 
     .collection-footer {
@@ -20,15 +62,8 @@
         height: 5%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         font-size: 18px;
-
-        .name {
-            width: 90%;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            width: 10%;
-        }
+        padding: 1rem;
     }
 }

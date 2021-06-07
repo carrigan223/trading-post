@@ -19,6 +19,36 @@
     }
 
     button {
-        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+.cart-dropdown-empty {
+    position: absolute;
+    width: 25vw;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 5px solid black;
+    background: linear-gradient(to bottom, black, white);
+    color: white;
+    font-size: 2.25rem;
+    text-decoration: underline;
+    text-decoration-color: #fccc0a;
+    top: 65px;
+    right: 0;
+    z-index: 5;
+
+    .empty-cart-items {
+        height: 240px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        margin-bottom: auto;
     }
 }

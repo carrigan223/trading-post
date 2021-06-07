@@ -1,3 +1,15 @@
+@keyframes TransitioningBackground {
+    0% {
+        background-position: 1% 0%;
+    }
+    50% {
+        background-position: 99% 100%;
+    }
+    100% {
+        background-position: 1% 0%;
+    }
+}
+
 .custom-button {
     min-width: 165px;
     width: auto;
@@ -48,6 +60,20 @@
             background-color: black;
             color: white;
             border: none;
+        }
+    }
+
+    &.empty-cart {
+        width: auto;
+
+        &:hover {
+            background-image: (
+                linear-gradient(270deg, #fccc0a, white, white, #fccc0a)
+            );
+            background-size: 400% 400%;
+            animation: TransitioningBackground 10s infinite;
+            border: none;
+            color: black;
         }
     }
 }

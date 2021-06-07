@@ -1,8 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux' //connect is a higher order compnent
+import { createStructuredSelector } from 'reselect'
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase/firbase.utils'
 import { ReactComponent as Logo } from '../../assets/crown.svg'
+import { selectCartHidden } from '../../redux/cart/cart.selectors'
+import { selectCurrentUser } from '../../redux/user/user.selector'
+
 import CartIcon from '../cart-icon/cart-icon'
 import CartMenu from '../cart-menu/cart-menu'
 
@@ -51,9 +55,9 @@ const Header = ({ currentUser, hidden }) => {
 //connect is a higher order component that takes in the component
 //then we map over the reducer state to get the required slice and
 //inject it as props
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-    currentUser,
-    hidden,
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden,
 })
 
 export default connect(mapStateToProps)(Header)
